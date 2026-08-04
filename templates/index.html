@@ -2,14 +2,32 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content = "width=devide-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud.ProjectA.Basic</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-    <h1>Cloud.ProjectA.Basic</h1>
+    <div class="container">
 
-    <p>Flask 첫 HTML 페이지입니다.</p>
+        <h1>Cloud.ProjectA.Basic</h1>
+
+        <p class="subtitle">Flask Cloud Learning Project</p>
+
+        <div class="card">
+
+            <p>🟢 Flask - Running</p>
+            <p>⚪ Docker - Coming Soon</p>
+            <p>⚪ MariaDB - Coming Soon</p>
+            <p>⚪ AWS - Coming Soon</p>
+
+        </div>
+
+        <button>프로젝트 시작하기</button>
+
+    </div>
 
 </body>
 </html>
