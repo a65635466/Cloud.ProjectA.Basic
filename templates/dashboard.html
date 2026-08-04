@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h1>Cloud Dashboard</h1>
+
+<div class="card">
+
+    <p>🐍 Python : {{ info.python }}</p>
+
+    <p>🖥️ OS : {{ info.os }}</p>
+
+    <p>⏰ Time : {{ info.time }}</p>
+
+    <p>💻 CPU : {{ info.cpu }} %</p>
+
+    <p>🧠 Memory : {{ info.memory }} %</p>
+
+</div>
+
+{% endblock %}
