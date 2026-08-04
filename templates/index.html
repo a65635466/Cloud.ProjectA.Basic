@@ -18,11 +18,14 @@
 
         <div class="card">
 
-            <p>🟢 Flask - Running</p>
-            <p>⚪ Docker - Coming Soon</p>
-            <p>⚪ MariaDB - Coming Soon</p>
-            <p>⚪ AWS - Coming Soon</p>
+            <p>🟢 Flask - {{ info.flask_status }}</p>
 
+            <p>Python : {{ info.python }}</p>
+
+            <p>OS : {{ info.os }}</p>
+
+            <p>Server Time : {{ info.time }}</p>
+            
         </div>
 
         <button>프로젝트 시작하기</button>

@@ -1,11 +1,19 @@
 from flask import Blueprint, render_template
+import platform
+from datetime import datetime
 
 # home Blueprint 생성
 home_bp = Blueprint("home", __name__)
 
-# 메인 페이지
 @home_bp.route("/")
 def home():
-    return render_template("index.html")  # render_template() -> Html 파일을 브라우저에 보내는 Flask 함수
-                                          #       문자열 대신 실제 웹페이지를 보여주기 위함
 
+    server_info = {
+        "project": "Cloud.ProjectA.Basic",
+        "python": platform.python_version(),
+        "os": platform.system(),
+        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "flask_status": "Running"
+    }
+
+    return render_template("index.html", info=server_info)
