@@ -8,18 +8,79 @@ Dashboard
 
 <h1>Cloud Dashboard</h1>
 
-<div class="card">
+<div class="dashboard-grid">
 
-    <p>🐍 Python : {{ info.python }}</p>
+    <div class="info-card">
+        <h3>🐍 Python</h3>
+        <div class="info-value" id = "python">{{ info.python }}</div>
+    </div>
 
-    <p>🖥️ OS : {{ info.os }}</p>
+    <div class="info-card">
+        <h3>🖥️ Operating System</h3>
+        <div class="info-value" id = "os">{{ info.os }}</div>
+    </div>
 
-    <p>⏰ Time : {{ info.time }}</p>
+    <div class="info-card">
+        <h3>💻 Hostname</h3>
+        <div class="info-value" id = "hostname">{{ info.hostname }}</div>
+    </div>
 
-    <p>💻 CPU : {{ info.cpu }} %</p>
+    <div class="info-card">
+        <h3>🌐 IP Address</h3>
+        <div class="info-value" id = "ip">{{ info.ip }}</div>
+    </div>
 
-    <p>🧠 Memory : {{ info.memory }} %</p>
+    <div class="info-card">
+        <h3>⚙ CPU Usage</h3>
+        <div class="info-value" id = "cpu">{{ info.cpu }}%</div>
+    </div>
+
+    <div class="info-card">
+        <h3>🧩 CPU Cores</h3>
+        <div class="info-value" id = "cpu_count">{{ info.cpu_count }}</div>
+    </div>
+
+    <div class="info-card">
+        <h3>🧠 Memory</h3>
+        <div class="info-value" id = "memory">{{ info.memory }}%</div>
+    </div>
+
+    <div class="info-card">
+        <h3>💾 Total RAM</h3>
+        <div class="info-value" id = "memoty_total">{{ info.memory_total }} GB</div>
+    </div>
+
+    <div class="info-card">
+        <h3>📀 Disk Usage</h3>
+        <div class="info-value" id = "disk">{{ info.disk }}%</div>
+    </div>
 
 </div>
 
+<script>
+
+async function updateSystemInfo(){
+
+    const response = await fetch("/api/system");
+    const data = await response.json();
+
+    document.getElementById("cpu").textContent =
+        data.cpu + "%";
+
+    document.getElementById("memory").textContent =
+        data.memory + "%";
+
+    document.getElementById("disk").textContent =
+        data.disk + "%";
+
+    document.getElementById("time").textContent =
+        data.time;
+
+}
+
+setInterval(updateSystemInfo,3000);
+
+updateSystemInfo();
+
+</script>
 {% endblock %}

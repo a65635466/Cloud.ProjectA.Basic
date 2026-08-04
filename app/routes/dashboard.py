@@ -1,28 +1,13 @@
 from flask import Blueprint, render_template
-
-import platform
-import psutil
-
-from datetime import datetime
+from app.services.system_service import get_system_info
 
 dashboard_bp = Blueprint("dashboard", __name__)
 
 @dashboard_bp.route("/dashboard")
 def dashboard():
+    system_info = get_system_info()
 
-    system_info = {
-
-        "python": platform.python_version(),
-
-        "os": platform.system(),
-
-        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-
-        "cpu": psutil.cpu_percent(interval=1),
-
-        "memory": psutil.virtual_memory().percent
-
-    }
+    print (system_info)
 
     return render_template(
         "dashboard.html",
