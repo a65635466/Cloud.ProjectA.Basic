@@ -2,6 +2,8 @@ import platform
 import psutil
 import socket
 from datetime import datetime
+from app.database import get_connection
+
 def get_system_info():
 
     return{
@@ -29,3 +31,27 @@ def get_system_info():
     "disk": psutil.disk_usage("/").percent
 
     }
+
+def save_system_log(cpu, memory, disk):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    sql="""
+        INSERT INTO system_logs
+        (created_at, cpu, memory, disk)
+        VALUES (%s,%s,%s,%s)
+        """
+
+    cursor.execute(
+        sql,
+        (
+            datetime.now(),
+            cpu,
+            memory,
+            disk
+        )
+    )
+    conn.commit()
+    cursor.close()
+    conn.close()
