@@ -55,3 +55,23 @@ def save_system_log(cpu, memory, disk):
     conn.commit()
     cursor.close()
     conn.close()
+
+def get_recent_logs(limit=10):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    sql ="""
+        SELECT *
+        FROM system_logs
+        ORDER BY created_at DESC
+        LIMIT %s
+        """
+
+    cursor.execute(sql, (limit,))
+    logs = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return logs
