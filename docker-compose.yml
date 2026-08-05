@@ -1,0 +1,31 @@
+services:
+  db:
+    image: mariadb:11
+    container_name: cloud-db
+
+    restart: always
+
+    environment:
+      MARIADB_ROOT_PASSWORD: 2@dlwndud2@
+      MARIADB_DATABASE: cloud_project
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  web:
+    build: .
+    container_name: cloud-web
+
+    restart: always
+
+    ports:
+      - "5000:5000"
+
+    depends_on:
+      - db
+
+volumes:
+  mariadb_data:
