@@ -47,7 +47,7 @@ Dashboard
 
     <div class="info-card">
         <h3>💾 Total RAM</h3>
-        <div class="info-value" id = "memoty_total">{{ info.memory_total }} GB</div>
+        <div class="info-value" id = "memory_total">{{ info.memory_total }} GB</div>
     </div>
 
     <div class="info-card">
@@ -73,14 +73,62 @@ async function updateSystemInfo(){
     document.getElementById("disk").textContent =
         data.disk + "%";
 
-    document.getElementById("time").textContent =
-        data.time;
+}
+
+async function loadLogs(){
+
+    const response = await fetch("/api/logs");
+    const logs = await response.json();
+
+    const body = document.getElementById("log-body");
+
+    body.innerHTML = "";
+
+    logs.forEach(log => {
+
+        body.innerHTML += `
+            <tr>
+                <td>${log.created_at}</td>
+                <td>${log.cpu}</td>
+                <td>${log.memory}</td>
+                <td>${log.disk}</td>
+            </tr>
+        `;
+
+    });
 
 }
 
-setInterval(updateSystemInfo,3000);
-
 updateSystemInfo();
+loadLogs();
+
+setInterval(() => {
+
+    updateSystemInfo();
+    loadLogs();
+
+}, 3000);
 
 </script>
+
+<hr>
+
+<h2>Recent System Logs</h2>
+
+<table id="log-table" border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>CPU (%)</th>
+            <th>Memory (%)</th>
+            <th>Disk (%)</th>
+        </tr>
+    </thead>
+
+    <tbody id="log-body">
+
+    </tbody>
+
+</table>
+
 {% endblock %}
