@@ -1,4 +1,4 @@
-# ☁️ Cloud.ProjectA.Basic
+#  Cloud.ProjectA.Basic
 
 Docker, Flask, MariaDB를 활용하여 구축한 **클라우드 시스템 모니터링 프로젝트**입니다.
 
@@ -6,7 +6,7 @@ Docker, Flask, MariaDB를 활용하여 구축한 **클라우드 시스템 모니
 
 ---
 
-# 📌 프로젝트 목표
+#  프로젝트 목표
 
 - Flask를 이용한 웹 서비스 개발
 - REST API 설계 및 구현
@@ -17,7 +17,7 @@ Docker, Flask, MariaDB를 활용하여 구축한 **클라우드 시스템 모니
 
 ---
 
-# 🏗 시스템 구조
+#  시스템 구조
 
 ```
 Browser
@@ -39,7 +39,7 @@ Ubuntu (WSL2)
 
 ---
 
-# 🛠 기술 스택
+#  기술 스택
 
 ## Backend
 
@@ -64,7 +64,7 @@ Ubuntu (WSL2)
 
 ---
 
-# 📂 프로젝트 구조
+# 프로젝트 구조
 
 ```
 Cloud.ProjectA.Basic
@@ -98,7 +98,7 @@ Cloud.ProjectA.Basic
 
 ---
 
-# ✨ 주요 기능
+# 주요 기능
 
 ## 1. 시스템 정보 조회
 
@@ -181,7 +181,7 @@ system_logs
 
 ---
 
-# 🐳 Docker 실행
+# Docker 실행
 
 이미지 생성
 
@@ -269,6 +269,6 @@ system_logs
 - 브라우저 인터페이스 수정
 - 구현했던 프로그램 복습, 수정
 
-# 📄 라이선스
+# 라이선스
 
 본 프로젝트는 학습 및 포트폴리오 목적으로 제작되었습니다.
